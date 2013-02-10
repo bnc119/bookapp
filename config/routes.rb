@@ -1,7 +1,7 @@
 Bookapp::Application.routes.draw do
   
-  
-  get "users/new"
+  # lots of named routes here
+	resources :users
 
   # match creates named routes: about_path => /about
   # match creates named routes: about_url => http://localhost:3000/about

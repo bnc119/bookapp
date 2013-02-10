@@ -1,2 +1,18 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<h1>Awesome!  Just need some information...</h1>
+
+<div class="row" id="main-content">
+	<div class="span4" id="sidebar">
+		<div class="well">
+			<%= form_for (@user) do |f| %>
+			<input type="text" class="input-block-level" placeholder="Name">
+				<!--
+				<%= f.text_field :name %>
+				-->
+			<div class="actions">
+				<%= f.submit "Sign up" %>
+			</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+
