@@ -2,9 +2,6 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.3'
 
-# Bundle edge Rails instead:
-# gem 'rails',     :git => 'git://github.com/rails/rails.git'
-
 gem 'sqlite3'
 gem 'therubyracer'
 gem 'execjs'
@@ -28,4 +25,5 @@ group :test do
   # Pretty printed test output
   gem 'turn', '0.8.2', :require => false
   gem 'rspec', '2.0.1'
+  gem 'webrat', '0.7.1'
 end

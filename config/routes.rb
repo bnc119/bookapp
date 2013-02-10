@@ -1,5 +1,11 @@
 Bookapp::Application.routes.draw do
-  resources :users
+  
+  
+  # match creates named routes: about_path => /about
+  # match creates named routes: about_url => http://localhost:3000/about
+  
+  match '/contact', :to => 'pages#contact'
+ 
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -50,7 +56,10 @@ Bookapp::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  
+  #named routes root_path => /
+  #named routes root_url => http://localhost:3000/
+  root :to => 'pages#home'
 
   # See how all your routes lay out with "rake routes"
 
