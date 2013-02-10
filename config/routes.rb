@@ -1,11 +1,18 @@
 Bookapp::Application.routes.draw do
   
   
+  get "users/new"
+
   # match creates named routes: about_path => /about
   # match creates named routes: about_url => http://localhost:3000/about
   
   match '/contact', :to => 'pages#contact'
  
+	# match creates named routes: signup_path => /signup
+  # match creates named routes: signup_url => http://localhost:3000/signup
+  
+  match '/signup', :to => 'users#new'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
