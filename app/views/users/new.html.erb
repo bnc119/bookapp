@@ -1,16 +1,32 @@
 <h1>Awesome!  Just need some information...</h1>
 
 <div class="row" id="main-content">
-	<div class="span4" id="sidebar">
+	<div class="span8" id="sidebar">
 		<div class="well">
-			<%= form_for (@user) do |f| %>
-			<input type="text" class="input-block-level" placeholder="Name">
-				<!--
-				<%= f.text_field :name %>
-				-->
-			<div class="actions">
-				<%= f.submit "Sign up" %>
-			</div>
+			<%= form_for @user do |f| %>
+			
+				<%= render 'shared/error_messages' %>
+				
+				<div class="controls">
+					<%= f.text_field :name, :class=>"text_field", :placeholder => "Name" %>
+				</div>
+			
+				<div class="controls">
+					<%= f.text_field :email, :class=>"text_field", :placeholder => "Email"%>
+				</div>
+			
+				<div class="controls">
+					<%= f.password_field :password, :class=>"text_field", :placeholder=>"Password" %>
+				</div>
+			
+				<div class="controls">
+					<%= f.password_field :password_confirmation, :class=>"text_field", :placeholder=>"Password Confirmation" %>
+				</div>
+			
+				<div class="actions">
+					<%= f.submit "Sign up" %>
+					<%= link_to "Cancel", root_path, :class=>'btn' %>
+				</div>
 			<% end %>
 		</div>
 	</div>

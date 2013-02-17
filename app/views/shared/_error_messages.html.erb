@@ -1,0 +1,14 @@
+<% if @user.errors.any? %>
+
+	<div class="alert alert-error">
+		<h4>Oh, snap.  We found <%= pluralize(@user.errors.count, "error") %> with your signup: </h4>
+		<p> There were problems with the following fields </p>
+		<ul>
+		<% @user.errors.full_messages.each do |m| %>
+			<li> <%= m %></li>
+		<% end %>
+		</ul>
+	</div>
+	
+
+<% end %>
