@@ -1,27 +1,19 @@
 
 <h1>Welcome to BookSmart!</h1>
-<p>
-The easy way to manage your personal library.
+	<p>
+	The easy way to manage your personal library.
+	
+<% if signed_in? %>
 
-<!-- Add login widgets -->
-<div class="row" id="main-contnent">
-	<div class="span4" id="sidebar">
-		<div class="well">
-			<form>
-				<fieldset>
-					<legend>Login</legend>
-					<input type="text" class="input-block-level" placeholder="email">
-					<input type="text" class="input-block-level" placeholder="password">
-					<input type="submit" class=btn btn-primary" value="login">
-					<%= link_to "Or Sign up Now!", signup_path %>
-				</fieldset>
-			</form>
-		</div>
-	</div>
-</div>
+<% else %>
+	<%= render 'shared/sign_in_form' %>
+<% end %>
+
+
+
 		
 					
 					
 
-</p>
+
 

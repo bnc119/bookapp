@@ -1,5 +1,7 @@
 Bookapp::Application.routes.draw do
   
+	resources :sessions, :only => [:new,:create, :destroy]
+
   # lots of named routes here
 	resources :users
 
@@ -12,6 +14,9 @@ Bookapp::Application.routes.draw do
   # match creates named routes: signup_url => http://localhost:3000/signup
   
   match '/signup', :to => 'users#new'
+  
+  match '/signin', :to => 'sessions#new'
+  match '/signout', :to => 'sessions#destroy'
 
 
   # The priority is based upon order of creation:

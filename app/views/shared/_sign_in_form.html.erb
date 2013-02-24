@@ -1,0 +1,18 @@
+<!-- Add login widgets -->
+<div class="row" id="main-content">
+	<div class="span4" id="sidebar">
+		<div class="well">
+			<%= form_for(:session, :url =>sessions_path) do |f| %>
+			
+				<legend>Login</legend>
+			
+				<%= f.text_field :email, :class=>"text_field", :placeholder => "email" %>
+				<%= f.password_field :password, :class=>"password", :placeholder => "password" %>
+				
+				<input type="submit" class=btn btn-primary" value="login">
+				<%= link_to "Or Sign up Now!", signup_path %>
+				
+			<% end %>
+		</div>
+	</div>
+</div>
