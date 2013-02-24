@@ -90,6 +90,141 @@ describe UsersController do
   
   end
   
+  describe 'GET edit' do
+    
+    before(:each) do
+      @user = Factory(:user)
+      test_sign_in(@user)
+    end
+    
+    it "should include a navbar item for editing profile information" do
+      get :edit, :id => @user
+      response.should have_selector("a", :href=>edit_user_path, :content => "Account Settings" )
+          
+    end
+    
+    it "should be successful" do
+      get :edit, :id => @user
+      response.should be_success
+    end
+    
+    it "should have the right title" do
+      get :edit, :id => @user
+      response.should have_selector("title", :content=>"Edit Profile")
+      
+    end
+      
+    
+  end
+  
+  describe 'PUT update' do
+    before(:each) do
+      @user = Factory(:user)
+      test_sign_in(@user)
+      
+    end
+      
+    describe 'failure' do
+      
+      before(:each) do
+        @attr = { :email => "", :password => "", :password_confirmation => ""}
+      end
+    
+      it 'should render the edit page' do
+        put :update, :id =>@user, :user=>@attr
+        response.should render_template('edit')
+      end
+    
+      it 'should have the right title' do
+        put :update, :id=> @user, :user=>@attr
+        response.should have_selector("title",  :content => "Edit Profile")
+      end
+      
+    end
+    
+    describe 'success' do
+      before(:each) do
+        @attr = { :name => "Example User 2", :email => "user@example.com", 
+                  :password => "foobaz", :password_confirmation => "foobaz"}
+      end
+    
+      it 'should change the user attributes' do
+        put :update, :id => @user, :user => @attr
+        @user.reload
+        @user.name.should == @attr[:name]
+        @user.email.should == @attr[:email]
+        
+      end
+      
+      it 'should redirect to the the user show page'  do
+        put :update, :id => @user, :user => @attr
+        response.should redirect_to(user_path(@user))
+      end
+      
+      it 'should have a flash message indicating succcess update'  do
+        put :update, :id => @user, :user => @attr
+        flash[:success].should =~ /profile updated/i
+      end
+      
+    end
+    
+  end
+  
+  describe 'authentication for show/edit/update of users' do
+  
+    before(:each) do
+      @user = Factory(:user)
+    end
+    
+    describe 'for non-signed in users' do
+      it "should deny access to 'edit' " do
+        get :edit, :id => @user
+        response.should redirect_to signin_path
+      end
+      
+      it "should deny access to 'update' " do
+        put :update, :id => @user, :user => {}
+        response.should redirect_to signin_path
+        
+      end
+      
+      it 'should deny access to index' do
+        get :index
+        response.should redirect_to root_path
+      end
+        
+    end
+    
+    describe 'for signedin users' do
+      
+      before(:each) do
+        wrong_user= Factory(:user,:email => Factory.next(:email))
+        test_sign_in(wrong_user)  
+      end 
+      
+      it 'should require matching users for edit' do
+        get :edit, :id => @user
+        response.should redirect_to root_path
+        
+      end
+      
+      it 'should require matching users for update' do
+        get :edit, :id => @user
+        response.should redirect_to root_path
+        
+      end
+      
+      it 'should deny access to index' do
+        get :index
+        response.should redirect_to root_path
+      end
+      
+    end  
+  end
+    
+  
+  
+  
   
 
 end

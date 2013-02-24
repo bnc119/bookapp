@@ -14,10 +14,12 @@
     <ul class="nav">
       <li> <%= link_to "Home", root_path %></li>
       <li><%= link_to "Contact", contact_path %></li>
-      <% if !signed_in? %>
-      	<li><%= link_to "Sign up!", signup_path %></li>
-      <% else %>
+      <% if signed_in? %>
+      	<li><%= link_to "Account Settings", edit_user_path(current_user)  %></li>
       	<li><%= link_to "Log out", signout_path, :method => :delete %></li>
+      	
+      <% else %>
+      	<li><%= link_to "Sign up!", signup_path %></li>
       <% end %>
 
     </ul>
