@@ -1,0 +1,46 @@
+<div class="row" id="main-content">
+	<div class="span8" id="sidebar">
+		<div class="well">
+			<%= form_for @book do |f| %>
+			
+				<%= render 'shared/book_error_messages' %>
+				
+				<div class="controls">
+					<%= f.text_field :title, :class=>"text_field", :placeholder => "Title" %>
+				</div>
+			
+				<div class="controls">
+					<%= f.text_field :author_last, :class=>"text_field", :placeholder => "Author Last Name"%>
+				</div>
+				
+				<div class="controls">
+					<%= f.text_field :author_first, :class=>"text_field", :placeholder => "Author First Name"%>
+				</div>
+				
+				<div class="controls">
+					<%= f.text_area :description, :class=>"text_field", :placeholder => "Description"%>
+				</div>
+				
+				<div class="controls">
+					<%= f.text_field :year_published, :class=>"text_field", :placeholder => "Year Published"%>
+				</div>
+				
+				<div class="controls">
+					<%= f.text_field :genre, :class=>"text_field", :placeholder => "Genre"%>
+				</div>
+				
+				<div class="controls">
+					<%= f.text_field :isbn, :class=>"text_field", :placeholder => "ISBN #"%>
+				</div>
+			
+				
+				<div class="actions">
+					<%= f.submit "Submit" %>
+					<!--
+					<%= link_to "Cancel", user_path(current_user), :class=>'btn' %>
+					-->
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>

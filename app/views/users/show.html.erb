@@ -1,5 +1,23 @@
 
+<h2><%= pluralize(@user.books.count, "book") %> in My Reading Queue</h2>
+
 <%= @user.name %>
 <%= @user.email %>
 
-<%= link_to "Home", root_path %>
+
+<table class="table table-hover">
+  <tr>
+    <th>Title</th>
+    <th>Author</th>
+  </tr>
+  
+  
+  <% @user.books.count.times do |b| %>
+    <tr>Book n<tr>
+  <% end %>
+  
+  
+</table>
+				
+<%= link_to "Add Book!", new_book_path %>
+

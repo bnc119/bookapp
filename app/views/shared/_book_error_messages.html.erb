@@ -1,0 +1,14 @@
+<% if @book.errors.any? %>
+
+	<div class="alert alert-error">
+		<h4>Oh, snap.  We found <%= pluralize(@book.errors.count, "error") %> with your book: </h4>
+		<p> There were problems with the following fields </p>
+		<ul>
+		<% @book.errors.full_messages.each do |m| %>
+			<li> <%= m %></li>
+		<% end %>
+		</ul>
+	</div>
+	
+
+<% end %>

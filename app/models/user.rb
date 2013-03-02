@@ -2,6 +2,10 @@ require 'digest'
 
 class User < ActiveRecord::Base
 
+  has_many :records, :foreign_key => :owner_id, :dependent => :destroy
+  has_many :books, :through => :records, :dependent =>:destroy
+  
+  
 	# allows mass-assignment of the following attributes
 	attr_accessible :name, :email, :password, :password_confirmation
 	

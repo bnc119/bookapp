@@ -1,6 +1,12 @@
 Bookapp::Application.routes.draw do
   
+  
+  
 	resources :sessions, :only => [:new,:create, :destroy]
+
+  # lots of named routes here  
+  resources :books, :except => [:index]
+
 
   # lots of named routes here
 	resources :users
