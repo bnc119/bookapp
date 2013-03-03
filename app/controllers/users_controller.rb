@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   def show
   	@user = User.find(params[:id])
   	@title = @user.name if @user.valid?
+  	@books = @user.books
  	end
 
 	def create

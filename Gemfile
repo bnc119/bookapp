@@ -7,11 +7,12 @@ gem 'therubyracer'
 gem 'execjs'
 gem 'jquery-rails'
 gem 'less-rails-bootstrap'
-
+gem 'will_paginate'
 
 group :development do 
   gem 'rspec-rails', '2.0.1'
   gem 'sqlite3'
+  gem 'faker'
 end 
 
 group :production do 

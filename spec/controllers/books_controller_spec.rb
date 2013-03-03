@@ -81,6 +81,7 @@ describe BooksController do
       end
       
       it 'should add the book to the users personal list' do
+        post :create, :book=>@attr
         @user.books.count.should == 1
       end
       

@@ -11,11 +11,14 @@
     <th>Author</th>
   </tr>
   
-  
-  <% @user.books.count.times do |b| %>
-    <tr>Book n<tr>
+  <% unless @books.empty? %>
+    <% @books.each  do |b| %>
+      <tr>
+        <td><%= link_to b.title, b %><td>
+        <td><%= b.author_last %><tr>
+      <tr>
+    <% end %>
   <% end %>
-  
   
 </table>
 				

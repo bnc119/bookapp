@@ -12,8 +12,8 @@ class BooksController < ApplicationController
 
   def create
     
-    @book = current_user.books.build(params[:book])
-    if @book.save
+    @book = current_user.books.create(params[:book])
+    if @book.valid?
       flash[:success] = "You've added a new book to your list!"
 			redirect_to @book
     else
