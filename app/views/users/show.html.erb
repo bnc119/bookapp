@@ -1,9 +1,9 @@
 
+
 <h2><%= pluralize(@user.books.count, "book") %> in My Reading Queue</h2>
 
 <%= @user.name %>
 <%= @user.email %>
-
 
 <table class="table table-hover">
   <tr>
@@ -15,12 +15,43 @@
     <% @books.each  do |b| %>
       <tr>
         <td><%= link_to b.title, b %><td>
-        <td><%= b.author_last %><tr>
+        <td><%= b.author_last %><td>
       <tr>
     <% end %>
   <% end %>
   
 </table>
+				
+<table class="table table-hover">
+  <tr>
+    <th>Image Path </th>
+    <th>GoodReads id</th>
+    <th>GoodReads title</th>
+    <th>GoodReads author</th>
+    <th>GoodReads title</th>
+  </tr>
+  
+  <% if false %>
+  <% unless @search.results.empty? %>
+    <% @search.results.work.each do |book| %>
+      <tr>
+        <td> <%= image_tag book.small_image_url %></td>
+        <td><%= book %></td>
+        <td><%= book.average_rating %></td>
+        <td><%= book.best_book.author.name %></td>
+        <td><%= book.books_count %></td>
+      <tr>
+    <% end %>
+  <% end %>
+  <% end %>
+  
+
+</table>
+				
+				
+				
+				
+				
 				
 <%= link_to "Add Book!", new_book_path %>
 

@@ -8,6 +8,7 @@ gem 'execjs'
 gem 'jquery-rails'
 gem 'less-rails-bootstrap'
 gem 'will_paginate'
+gem 'goodreads'
 
 group :development do 
   gem 'rspec-rails', '2.0.1'
