@@ -2,6 +2,8 @@ Bookapp::Application.routes.draw do
   
   
   
+  match '/search', :to => 'search#index'
+
 	resources :sessions, :only => [:new,:create, :destroy]
 
   # lots of named routes here  
