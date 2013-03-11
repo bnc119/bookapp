@@ -10,12 +10,17 @@ describe BooksController do
     end
   end
   
+
   describe "GET 'show'" do
     
     before(:each) do
       @book = Factory(:book)
     end
-      
+
+    before :each do
+      @book = Factory(:book)
+
+    end
     
     it "should be successful" do
       get :show, :id => @book

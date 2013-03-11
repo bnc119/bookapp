@@ -5,8 +5,8 @@
 class UsersController < ApplicationController
   
   before_filter :reject_index, :only => [:index]
-  before_filter :authenticate, :only => [:edit, :update]
-  before_filter :correct_user, :only => [:edit, :update]
+  before_filter :authenticate, :only => [:edit, :update, :show]
+  before_filter :correct_user, :only => [:edit, :update, :show]
   
   
   def new
@@ -19,12 +19,6 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
   	@title = @user.name if @user.valid?
   	@books = @user.books
-  	
-  	
-    #client = Goodreads::Client.new(:api_key =>'48CscoZJ4dWudrtBiOlaqg', 
-    #                              :api_secret => '35BVnsO0JCY5XKsF1z8MMt2pM9u61gLPke2z0HB9OFo' )
-                                  
-    #@search = client.search_books("The Lord of the Rings")
   	
  	end
 

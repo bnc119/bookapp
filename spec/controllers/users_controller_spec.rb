@@ -20,15 +20,11 @@ describe UsersController do
   		@user = Factory(:user)
   	end
   
-  	it "should be successful" do
+  	it "should redirect to signin path" do
   		get :show, :id => @user
-  		response.should be_success
+  		response.should redirect_to signin_path
   	end
   	
-  	it "should find the right user" do
-  		get :show, :id => @user
-  		assigns(:user).should == @user
-  	end
   end
   
   describe "POST 'create'" do
@@ -170,7 +166,7 @@ describe UsersController do
     
   end
   
-  describe 'authentication for show/edit/update of users' do
+  describe 'authentication for show/edit/update' do
   
     before(:each) do
       @user = Factory(:user)
@@ -191,6 +187,11 @@ describe UsersController do
       it 'should deny access to index' do
         get :index
         response.should redirect_to root_path
+      end
+      
+      it 'should deny access to show' do
+        get :show, :id=>@user
+        response.should redirect_to signin_path
       end
         
     end
@@ -214,16 +215,19 @@ describe UsersController do
         
       end
       
+      it 'should direct to root page' do
+        get :show, :id => @user
+        response.should redirect_to root_path
+      end
+      
       it 'should deny access to index' do
         get :index
         response.should redirect_to root_path
       end
       
+      
     end  
   end
-    
-  
-  
   
   
 

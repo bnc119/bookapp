@@ -9,8 +9,8 @@
   <% unless @search_results.empty? %>
     <% @search_results.each  do |b| %>
       <tr>
-        <td><%= b.title %><td>
-        <td><td>
+        <td><%= b.title %></td>
+        <td><%= b.author.name %></td>
       </tr>
     <% end %>
   <% end %>

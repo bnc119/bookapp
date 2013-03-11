@@ -15,4 +15,6 @@ class Book < ActiveRecord::Base
   attr_accessible :title, :author_first, :author_last, 
                   :description, :year_published, :genre, :isbn 
 
+
+
 end
