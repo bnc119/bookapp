@@ -26,6 +26,7 @@
   <% unless @books.empty? %>
     <% @books.each  do |b| %>
       <tr>
+        
         <td><%= link_to b.title, b %></td>
         <td><%= b.author_last %></td>
       </tr>

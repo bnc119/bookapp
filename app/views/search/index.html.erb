@@ -2,15 +2,31 @@
 
 <table class="table table-hover">
   <tr>
+    <th></th>
     <th>Title</th>
     <th>Author</th>
+    <th></th>
   </tr>
   
   <% unless @search_results.empty? %>
     <% @search_results.each  do |b| %>
       <tr>
+        <td><%= image_tag b.image_url %></td>
         <td><%= b.title %></td>
         <td><%= b.author.name %></td>
+        <td>
+
+
+          <%= form_for(:book, :url=>books_path) do |f| %>
+            
+            
+            <%= hidden_field_tag :book, {:title =>"some title"} %>
+
+
+            <input type="submit" class=btn btn-success" value="Add to list">
+          <% end %>
+
+        </td>
       </tr>
     <% end %>
   <% end %>

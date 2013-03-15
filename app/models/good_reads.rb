@@ -15,8 +15,6 @@ class GoodReads
           results << book.best_book
         end
       end 
-    
-    
     return results
   end
 
