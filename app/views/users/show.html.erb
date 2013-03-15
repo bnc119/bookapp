@@ -15,25 +15,21 @@
 	
 <% end %>
 			
+       
 
-
-<table class="table table-hover">
-  <tr>
-    <th>Title</th>
-    <th>Author</th>
-  </tr>
-  
-  <% unless @books.empty? %>
-    <% @books.each  do |b| %>
-      <tr>
+<ul class="thumbnails">
         
-        <td><%= link_to b.title, b %></td>
-        <td><%= b.author_last %></td>
-      </tr>
+  <% unless @books.empty? %>
+    <% @books.each do |b| %>
+
+      <li>
+        <a href="#"><%= image_tag b.cover_url %></a>
+      </li>
+      
     <% end %>
   <% end %>
-  
-</table>
-				
+        
+</ul>
+		
 <%= link_to "Add Book!", new_book_path %>
 

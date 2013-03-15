@@ -16,14 +16,18 @@
         <td><%= b.author.name %></td>
         <td>
 
-
+          <% @first = b.author.name.split(" ") %>
           <%= form_for(:book, :url=>books_path) do |f| %>
             
             
-            <%= hidden_field_tag :book, {:title =>"some title"} %>
+            <%= hidden_field_tag "book[title]", b.title %>
+            <%= hidden_field_tag "book[author_first]", b.author.name.split(" ")[0] %>
+            <%= hidden_field_tag "book[author_last]", b.author.name.split(" ")[1] %>
+            <%= hidden_field_tag "book[description]", "Imported from GoodReads" %>
+            <%= hidden_field_tag "book[cover_url]", b.image_url %>
+            <%= hidden_field_tag "book[isbn]", Digest::MD5.hexdigest(rand.to_s) %>
 
-
-            <input type="submit" class=btn btn-success" value="Add to list">
+            <input type="submit" class="btn btn-success" value="Add to list">
           <% end %>
 
         </td>

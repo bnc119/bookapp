@@ -13,7 +13,7 @@ class Book < ActiveRecord::Base
                     :uniqueness => { :case_sensitive => false}
 
   attr_accessible :title, :author_first, :author_last, 
-                  :description, :year_published, :genre, :isbn 
+                  :description, :year_published, :genre, :isbn, :cover_url
 
 
 
